@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>                
+        <title></title>
+    </h:head>
+    <h:body>
+        <f:view contracts="alldevices">
+            <ui:composition template="/template.xhtml">                                  
+                <ui:define name="content">    
+                    <h:panelGroup id="headerId" class="clearfix" layout="block">
+                        <h:panelGroup id="info" layout="block">
+                            <h1><h:outputText value="Rafael Nadal" /></h1>
+                            <h2><h:outputText value="Profesional Tennis Player" /></h2>
+                            <h3><h:outputText value="Manacor, Mallorca, Spain" /></h3>  
+                            <small><h:outputLink value="http://www.rafaelnadal.com/">Rafa Home</h:outputLink>&bull;<h:outputLink value="http://www.atpworldtour.com/Tennis/Players/Top-Players/Rafael-Nadal.aspx">Rafa ATP</h:outputLink></small>
+                        </h:panelGroup>
+                        <h:panelGroup id="photo" layout="block">
+                            <h:graphicImage value="#{resource['default/images:nadal.jpg']}"/>
+                        </h:panelGroup>                      
+                    </h:panelGroup>  
+
+                    <section>
+                        <h2><h:outputText value="Rafael Nadal" /></h2>
+                        <p><h:outputText value="'Rafael 'Rafa' Nadal Parera, born 3 June 1986) is a Spanish professional tennis player and the current world No. 1. His success on clay has earned him the nickname 'King of Clay' and has led many sports journalists and commentators, as well as former and current players, to regard him as the greatest clay court player in history.[b] Furthermore, his evolution into all-court threat has established himself as one of the greatest tennis players of all time..."/></p>
+                    </section>
+
+                    <section id="skills" class="clearfix">
+                        <h2><h:outputText value="Grand Slams" /></h2>
+                        <section id="gs-left">
+                            <h4><h:outputText value="Titles" /></h4>
+                            <ul>
+                                <li>2005 French Open</li>
+                                <li>2006 French Open</li>
+                                <li>2007 French Open</li>
+                                <li>2008 French Open</li>
+                                <li>2008 Wimbledon</li>
+                                <li>...</li>
+                            </ul>
+                        </section>
+
+                        <section id="gs-right">
+                            <h4 itemprop="about"><h:outputText value="Runner-up" /></h4>
+                            <ul>
+                                <li>2006 Wimbledon</li>
+                                <li>2007 Wimbledon</li>
+                                <li>...</li>                                
+                            </ul>
+                        </section>
+                    </section>
+
+                    <h2><h:outputText value="Write a mesage:" /></h2>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Name:" for="nameId"/>
+                            <h:inputText id="nameId"/>
+                            <h:outputLabel value="Surname:" for="surnameId"/>
+                            <h:inputText id="surnameId"/>
+                            <h:outputLabel value="Message:" for="messageId"/>
+                            <h:inputTextarea id="messageId"/>
+                            <f:verbatim/>
+                            <h:commandButton value="Send"/>
+                        </h:panelGrid>
+                    </h:form>
+                </ui:define>               
+            </ui:composition>
+        </f:view>
+    </h:body>
+</html>
+
+
+
+

@@ -1,0 +1,6 @@
+book\beans\DestroyCustomScope.class
+book\beans\CreateCustomScope.class
+book\beans\CustomScope.class
+book\beans\SponsoredLinksBean.class
+book\beans\CustomScopeResolver.class
+book\beans\FreeLinksBean.class

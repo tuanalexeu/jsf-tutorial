@@ -1,0 +1,74 @@
+*[id*='_themeswitcher']  
+{
+    width:190px;
+    height:100px;
+    border: 2px solid green;
+    overflow: hidden !important;
+    background-color: snow;
+}
+
+*[id*='_inner_themeswitcher'] {
+    width: 205px !important;
+    height: 100px !important;
+    border: 3px solid gray;
+    overflow: auto !important;
+    padding-right: 15px !important;    
+}
+
+*[id*='themeswitcherTable'] {
+    border-collapse:collapse;
+    text-align:left;
+    width:100%;
+}
+
+*[id*='themeswitcherTable'] td,.content th {
+    padding:3px 10px;
+    text-align:center;
+}
+
+*[id*='themeswitcherTable'] thead th {
+    background:0;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699',endColorstr='#00557F');
+    background-color:#069;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    border-left:1px solid #0070A8;
+}
+
+*[id*='themeswitcherTable'] thead th:first-child {
+    border:none;
+}
+
+*[id*='themeswitcherTable'] tbody td {
+    color:#00496B;
+    border-left:1px solid #E1EEF4;
+    font-size:12px;
+    font-weight:400;
+}
+
+*[id*='themeswitcherTable'] tbody .alt td {
+    background:#E1EEF4;
+    color:#00496B;
+}
+
+*[id*='themeswitcherTable'] tbody td:first-child {
+    border-left:none;
+}
+
+*[id*='themeswitcherTable'] tbody tr:last-child td {
+    border-bottom:none;
+}
+
+*[id*='themeswitcherTable'] table tfoot td div {
+    border-top:1px solid #069;
+    background:#E1EEF4;
+    padding:2px;
+}
+
+*[id*='selectedTheme'] {
+    font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif;
+    font-size: 14px;
+    color: black;
+}
+

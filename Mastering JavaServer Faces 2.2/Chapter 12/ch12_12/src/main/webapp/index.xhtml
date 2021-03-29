@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+        <f:metadata>
+            <f:viewParam name="in" value="#{randomInBean.in}"/>
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <ui:include src="#{randomInBean.in}"/>
+
+        <h:button value="Tell mypage.xhtml To Include The Same Page As You Did" outcome="mypage.xhtml" includeViewParams="true"/>
+        <h:button value="Random Page" outcome="index.xhtml" includeViewParams="false"/>
+        <hr/>
+        <h:button value="Include in_index_A.xhtml Page" outcome="index.xhtml?in=in_index_A.xhtml"/>
+        <h:button value="Include in_index_B.xhtml Page" outcome="index.xhtml?in=in_index_B.xhtml"/>
+        <h:button value="Include in_index_C.xhtml Page" outcome="index.xhtml?in=in_index_C.xhtml"/>               
+    </h:body>
+</html>
+

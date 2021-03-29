@@ -1,0 +1,3 @@
+book\beans\EmailValidator.class
+book\beans\EscapeMessagesRenderer.class
+book\beans\EscapeResponseWriter.class

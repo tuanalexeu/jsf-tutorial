@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>   
+    <f:view transient="true">       
+        <h:form>            
+            <h:commandButton value="Generate Timestamp"/>
+        </h:form>
+        <hr/>
+        Request Scoped Bean:<h:outputText value="#{timestampRSBean.timestamp}"/>        
+        <hr/>
+        View Scoped Bean:<h:outputText value="#{timestampVSBean.timestamp}"/> [keep an eye on this in stateless mode]   
+        <hr/>
+        Session Scoped Bean:<h:outputText value="#{timestampSSBean.timestamp}"/>    
+        <hr/>
+        Application Scoped Bean:<h:outputText value="#{timestampASBean.timestamp}"/>    
+        <hr/>
+    </f:view>   
+</html>
+
+

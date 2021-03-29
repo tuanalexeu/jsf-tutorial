@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>         
+    </h:head>
+    <h:body>
+        <h:form id="hashSetFormId">           
+            <b>HASH SET:</b>            
+            <h:dataTable value="#{playersBean.dataHashSet}" binding="#{playersBean.table}" rows="#{playersBean.rowsOnPage}" first="0" var="t" border="1">                  
+                <h:column>
+                    <f:facet name="header">Ranking</f:facet>                   
+                    <h:outputText value="#{t.ranking}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>                 
+                    <h:outputText value="#{t.player}"/>
+                </h:column>e
+                <h:column>
+                    <f:facet name="header">Age</f:facet>                                      
+                    <h:outputText value="#{t.age}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Birthplace</f:facet>                                        
+                    <h:outputText value="#{t.birthplace}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Residence</f:facet>                     
+                    <h:outputText value="#{t.residence}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Height (cm)</f:facet>                        
+                    <h:outputText value="#{t.height}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Weight (kg)</f:facet>                                
+                    <h:outputText value="#{t.weight}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Coach</f:facet>                         
+                    <h:outputText value="#{t.coach}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Born</f:facet>
+                    <h:outputText value="#{t.born}">                
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>                    
+                </h:column>               
+                <f:facet name="footer">                         
+                    <h:outputText value="#{(playersBean.table.first div playersBean.table.rows) + 1}">
+                        <f:converter converterId="javax.faces.Integer"/>
+                    </h:outputText>
+                    of   
+                    <h:outputText value="#{playersBean.table.rowCount mod playersBean.table.rows eq 0 ? (playersBean.table.rowCount div  playersBean.table.rows) : ((playersBean.table.rowCount div  playersBean.table.rows) + 1)-(((playersBean.table.rowCount div  playersBean.table.rows) + 1) mod 1)}">
+                        <f:converter converterId="javax.faces.Integer"/>
+                    </h:outputText>
+                    <h:commandButton value="First Page" action="#{playersBean.goToFirstPage()}" disabled="#{playersBean.table.first eq 0}" />
+                    <h:commandButton value="Previous Page" action="#{playersBean.goToPreviousPage()}" disabled="#{playersBean.table.first eq 0}" />
+                    <h:commandButton value="Next Page" action="#{playersBean.goToNextPage()}" disabled="#{playersBean.table.first + playersBean.table.rows ge playersBean.table.rowCount}" />                     
+                    <h:commandButton value="Last Page" action="#{playersBean.goToLastPage()}" disabled="#{playersBean.table.first + playersBean.table.rows ge playersBean.table.rowCount}" />                                         
+                    <b>FIRST:</b> #{playersBean.table.first}
+                    <b>ROWS:</b> #{playersBean.table.rows}
+                    <b>ROW COUNT:</b> #{playersBean.table.rowCount}                    
+                </f:facet>    
+            </h:dataTable>                        
+        </h:form>
+    </h:body>
+</html>
+

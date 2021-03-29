@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"> 
+  <title>Range Slider with jQuery UI</title>  
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" media="all" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+</head>
+
+<body>
+  <div id="w">
+    <div id="content">     
+      <h2>Ranged Slider</h2>
+      <div id="rangedval">
+        Range Value: <span id="rangeval">90 - 290</span>
+      </div>      
+      <div id="rangeslider"></div>      
+    </div>
+  </div>
+<script type="text/javascript">
+$(function(){  
+  $('#rangeslider').slider({
+    range: true,
+    min: 0,
+    max: 100,
+    values: [ 5, 20 ],
+    slide: function( event, ui ) {
+      $('#rangeval').html(ui.values[0]+" - "+ui.values[1]);
+    }
+  });
+});
+</script>
+</body>
+</html>

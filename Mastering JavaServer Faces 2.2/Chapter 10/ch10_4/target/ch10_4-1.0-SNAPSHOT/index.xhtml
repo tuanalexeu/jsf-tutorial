@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://temp.converter/"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>             
+        <h:form>
+            Convert to:
+            <h:selectOneMenu value="#{tempBean.unitto}">
+                <f:selectItem itemValue="fahrenheit" itemLabel="fahrenheit" />
+                <f:selectItem itemValue="celsius" itemLabel="celsius" />
+            </h:selectOneMenu>
+            Insert value:
+            <h:inputText value="#{tempBean.temp}"/>
+            <h:commandButton value="Convert">
+                <f:ajax execute="@form" render=":tempId" />
+            </h:commandButton>
+        </h:form>     
+        <t:temperature id="tempId" unitto="#{tempBean.unitto}" temp="#{tempBean.temp}" />                              
+    </h:body>
+</html>
+

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://xmlns.jcp.org/jsf/composite/smartimg"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="3" cellspacing="0" cellpadding="0">
+            <t:smartimg item="item_1" src="#{resource['default/images:play.png']}" action="#{smartimgBean.smartimgAction()}">
+                <f:actionListener for="imgActionListener" type="book.beans.SmartimgListener"/>      
+                <f:ajax event="action" execute="@this" render="@this"/>            
+            </t:smartimg>            
+            <t:smartimg item="item_2" src="#{resource['default/images:pause.png']}" action="#{smartimgBean.smartimgAction()}">
+                <f:actionListener for="imgActionListener" type="book.beans.SmartimgListener"/>      
+                <f:ajax event="action" execute="@this" render="@this"/>            
+            </t:smartimg> 
+            <t:smartimg item="item_3" src="#{resource['default/images:stop.png']}" action="#{smartimgBean.smartimgAction()}">
+                <f:actionListener for="imgActionListener" type="book.beans.SmartimgListener"/>      
+                <f:ajax event="action" execute="@this" render="@this"/>            
+            </t:smartimg> 
+        </h:panelGrid>        
+    </h:body>
+</html>
+

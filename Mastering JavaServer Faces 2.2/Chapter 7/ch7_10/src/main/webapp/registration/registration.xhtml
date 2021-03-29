@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>   
+    <h:body>
+        <h1><b>First page in the 'registration' flow</b></h1>
+        <h1><b>In flow ? #{null != facesContext.application.flowHandler.currentFlow}</b></h1><br/><br/> 
+        <hr/>
+        Your registration last credentials (in <b>flow</b>):
+        <h:outputText id="credentialsFlowId" value="#{registrationBean.playerName} #{registrationBean.playerSurname}"/>
+        <hr/>
+        Random credentials (in <b>view</b>) [as long as we are in this view this value won't change]:
+        <h:outputText id="credentialsViewId" value="#{viewRegistrationBean.playerNameView} #{viewRegistrationBean.playerSurnameView}"/>
+        <hr/>
+        <h:form>
+            Name: <h:inputText value="#{registrationBean.playerName}"/>
+            Surname: <h:inputText value="#{registrationBean.playerSurname}"/>
+            <h:commandButton value="Register To Tournament (AJAX call a method of a flow bean)" action="#{registrationBean.credentialsUpperCase()}">
+                <f:ajax execute="@form" render="@form :credentialsFlowId :credentialsViewId"/>
+            </h:commandButton>    
+            <h:commandButton value="Register To Tournament (AJAX call a method of a view bean)" action="#{viewRegistrationBean.generateCredentials()}">
+                <f:ajax execute="@this" render="@form :credentialsFlowId :credentialsViewId"/>
+            </h:commandButton>  
+        </h:form>    
+        <h:form>
+            <h:commandButton value="Next (next page in flow)" action="#{registrationBean.registrationAction()}"/>           
+            <h:commandButton value="Back (exit flow)" action="taskFlowReturnIndex"/>  
+        </h:form>
+    </h:body>
+</html>
+

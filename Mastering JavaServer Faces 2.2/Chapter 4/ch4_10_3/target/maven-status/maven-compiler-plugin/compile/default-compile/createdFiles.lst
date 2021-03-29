@@ -1,0 +1,4 @@
+book\beans\EmailValidator.class
+book\beans\PlayerRenderer.class
+book\ejbs\StyleResourcesEJBBean.class
+book\beans\StyleResourcesBean.class

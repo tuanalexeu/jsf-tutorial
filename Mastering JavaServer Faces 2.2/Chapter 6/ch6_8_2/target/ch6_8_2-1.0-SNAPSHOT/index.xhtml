@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+        <script type="text/javascript">
+            //<![CDATA[
+            function deselectRadios(id, val) {
+              
+                var f = document.getElementById("hashMapFormId");
+                for (var i = 0; i < f.length; i++)
+                {
+                    var e = f.elements[i];
+                    var eid = e.id;
+                    if (eid.indexOf("radiosId") !== -1) {
+                        if (eid.indexOf(id) === -1) {
+                            e.checked = false;
+                        } else {
+                            e.checked = true;
+                            document.getElementById("hashMapFormId:selectedRowId").value = val;
+                        }
+                    }
+                }
+            }
+            //]]>
+        </script>    
+    </h:head>
+    <h:body>
+        <h:form id="hashMapFormId">           
+            <b>HASH MAP:</b>
+            <h:dataTable value="#{playersBean.dataHashMap.entrySet()}" var="t" border="1">
+                <h:column>
+                    <f:facet name="header">Select</f:facet>
+                    <h:selectOneRadio id="radiosId" onclick="deselectRadios(this.id, '#{t.key}');">
+                        <f:selectItem itemValue="null"/>
+                    </h:selectOneRadio>
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Ranking</f:facet>
+                    #{t.key}                       
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Name</f:facet>                    
+                    <h:outputText value="#{t.value.player}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Age</f:facet>                    
+                    <h:outputText value="#{t.value.age}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Birthplace</f:facet>                    
+                    <h:outputText value="#{t.value.birthplace}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Residence</f:facet>                    
+                    <h:outputText value="#{t.value.residence}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Height (cm)</f:facet>                   
+                    <h:outputText value="#{t.value.height}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Weight (kg)</f:facet>                    
+                    <h:outputText value="#{t.value.weight}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Coach</f:facet>                   
+                    <h:outputText value="#{t.value.coach}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Born</f:facet>
+                    <h:outputText value="#{t.value.born}">                
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                </h:column>
+            </h:dataTable>
+            <h:inputHidden id="selectedRowId" value="#{playersBean.selectedPlayerKey}"/>
+            <h:commandButton value="Show Hash Map Selection" action="#{playersBean.showSelectedPlayer()}" />
+            SELECTED PLAYER KEY:
+            <h:outputText value="#{playersBean.selectedPlayerKey}"/>
+        </h:form>
+    </h:body>
+</html>
+

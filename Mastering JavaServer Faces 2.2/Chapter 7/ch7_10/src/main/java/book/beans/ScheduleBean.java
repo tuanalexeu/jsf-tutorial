@@ -1,0 +1,41 @@
+package book.beans;
+
+import javax.faces.flow.FlowScoped;
+import javax.inject.Named;
+
+/**
+ *
+ * @author Leonard
+ */
+@Named
+@FlowScoped(value="schedule")
+public class ScheduleBean {
+    
+    private String day;
+    private String hourstart;
+    private String regcode;
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getHourstart() {
+        return hourstart;
+    }
+
+    public void setHourstart(String hourstart) {
+        this.hourstart = hourstart;
+    }
+
+    public String getRegcode() {
+        return regcode;
+    }
+
+    public void setRegcode(String regcode) {
+        this.regcode = regcode;
+    }          
+}

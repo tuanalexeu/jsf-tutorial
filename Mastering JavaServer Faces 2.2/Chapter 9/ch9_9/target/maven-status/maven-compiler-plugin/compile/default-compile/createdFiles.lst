@@ -1,0 +1,6 @@
+book\beans\CustomRenderKit.class
+book\beans\CustomClientSideStateHelper.class
+book\beans\CustomClientSideStateHelper$StringBuilderWriter.class
+book\beans\WriteStateInDB.class
+book\beans\PlayersBean.class
+book\beans\CustomResponseStateManager.class

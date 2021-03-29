@@ -1,0 +1,4 @@
+book\beans\EmailValidator.class
+book\beans\ValidatorsBean.class
+book\beans\CustomApplication.class
+book\beans\CustomApplicationFactory.class

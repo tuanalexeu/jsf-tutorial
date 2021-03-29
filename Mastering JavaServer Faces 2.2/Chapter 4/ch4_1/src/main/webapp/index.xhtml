@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>  
+        <!-- Player Listener 1 -->
+        <h:form>           
+            <h:commandButton value="Player Listener 1" actionListener="#{playerBean.playerListener}" action="#{playerBean.playerDone()}"/>
+        </h:form>
+        <!-- Player Listener 2 -->
+        <h:form>
+            <h:commandButton value="Player Listener 2" action="#{playerBean.playerDone()}">
+                <f:actionListener type="book.beans.PlayerListener"/>
+            </h:commandButton>    
+        </h:form>
+        <h:form>
+            <h:commandButton value="Player Listener 2W" action="#{playerBean.playerDone()}">
+                <f:actionListener type="book.beans.PlayerListenerW"/>
+            </h:commandButton>    
+        </h:form>
+        <!-- Player Listener 3 -->
+        <h:form>
+            <h:commandButton value="Player Listener 3" actionListener="#{playerBean.playerListener}" action="#{playerBean.playerDone()}">
+                <f:actionListener type="book.beans.PlayerListener"/>
+            </h:commandButton>    
+        </h:form>       
+        <!-- Player Listener 4 -->
+        <h:form>
+            <h:commandButton value="Player Listener 4" action="#{playerBean.playerDone()}" />            
+        </h:form>        
+    </h:body>
+</html>
+

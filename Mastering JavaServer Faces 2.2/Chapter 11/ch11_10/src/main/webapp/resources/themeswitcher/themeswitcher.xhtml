@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="book.beans.ThemeSwitcherComponent">   
+        <cc:attribute name="theme" default="" type="java.lang.String" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>        
+        <h:outputScript library="themeswitcher" name="js/jquery.min.js"/>
+        <h:outputScript library="themeswitcher" name="js/modernizr-2.0.6-development-only.js"/>
+        <h:outputScript library="themeswitcher" name="js/jquery-ui.min.js"/>
+        <h:outputScript library="themeswitcher" name="js/prettify.js"/>
+        <h:outputScript library="themeswitcher" name="js/ddslick.js"/> 
+        <div id="#{cc.clientId}:themeswitcher">    
+            <h:form id="themeswitcherForm">                                          
+                <!-- <h:outputScript name="jsf.js" library="javax.faces" target="head"/> -->
+                <select id="#{cc.clientId}:themeswitcherForm:themeswitcher_content">                     
+                    <ui:repeat value="#{cc.contracts}" var="t">                                        
+                        <option value="#{t}" data-imagesrc="#{request.contextPath}#{request.servletPath}/javax.faces.resource/#{t}.png?con=#{t}" data-description="Description: #{t} theme">#{t}</option>   
+                    </ui:repeat>                      
+                    <option selected="true" style="display:none;" data-description="Current theme: #{cc.attrs.theme}">Select theme ...</option>                    
+                </select>                                           
+                <h:inputHidden id="selectedTheme" value="#{cc.attrs.theme}"/>
+            </h:form>
+        </div>        
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+                var themeForm = ("#{cc.clientId}:themeswitcherForm").replace(/:/g, "\\:");
+                var themeSelectElem = ("#{cc.clientId}:themeswitcherForm:themeswitcher_content").replace(/:/g, "\\:");
+                var themeHiddenElem = ("#{cc.clientId}:themeswitcherForm:selectedTheme").replace(/:/g, "\\:");
+
+                $('#' + themeSelectElem).ddslick({
+                    onSelected: function(data) {
+                        if (data.selectedData.text !== "Select theme ...") {
+                            setTheme(data);
+                        }
+                    }
+                });
+
+                // callback function
+                function setTheme(data) {
+                    $('#' + themeHiddenElem).val(data.selectedData.text);
+                    //jsf.ajax.request(this, null, {execute: '#{cc.clientId}:themeswitcherForm:selectedTheme', render: "@all"});
+                    $('#' + themeForm).submit(); // without AJAX
+                }
+            });
+
+        </script>
+    </cc:implementation>
+</html>

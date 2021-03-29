@@ -1,0 +1,10 @@
+book\beans\CustomRenderKit.class
+book\beans\UAgentInfo.class
+book\beans\TempConvert640Renderer.class
+book\beans\TempConvertComponent.class
+book\beans\TempConvertClient.class
+book\beans\TempConvert480Renderer.class
+book\beans\TempConvertDefaultRenderer.class
+book\beans\CustomRenderKitFactory.class
+book\beans\TempConvert320Renderer.class
+book\beans\TempBean.class

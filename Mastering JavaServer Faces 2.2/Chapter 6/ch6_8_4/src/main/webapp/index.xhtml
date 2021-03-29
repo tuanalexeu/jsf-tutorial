@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>         
+    </h:head>
+    <h:body>
+        <h:form id='hashSetFormId'>          
+            <b>HASH SET:</b>
+            <h:dataTable value="#{playersBean.dataHashSet}" var="t" border="1">
+               <h:column>
+                    <f:facet name="header">Select</f:facet>
+                   <h:selectBooleanCheckbox value="#{t.selected}" />                                     
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Ranking</f:facet>                    
+                    <h:outputText value="#{t.ranking}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>                   
+                    <h:outputText value="#{t.player}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Age</f:facet>                                       
+                    <h:outputText value="#{t.age}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Birthplace</f:facet>                                        
+                    <h:outputText value="#{t.birthplace}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Residence</f:facet>                     
+                    <h:outputText value="#{t.residence}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Height (cm)</f:facet>                         
+                    <h:outputText value="#{t.height}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Weight (kg)</f:facet>                               
+                    <h:outputText value="#{t.weight}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Coach</f:facet>                          
+                    <h:outputText value="#{t.coach}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Born</f:facet>
+                    <h:outputText value="#{t.born}">                
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>                    
+                </h:column>               
+            </h:dataTable>                                                          
+            <h:commandButton value="Show Selected Players" action="#{playersBean.showSelectedPlayers()}" /> 
+            <h:dataTable value="#{playersBean.selectedPlayers}" var="t" border="1">
+                <h:column>
+                    <f:facet name="header">Selected Player</f:facet>
+                    #{t.player}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

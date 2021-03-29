@@ -1,0 +1,12 @@
+/* 
+    Document   : validation
+    Created on : Dec 12, 2013, 2:22:13 PM
+    Author     : Leonard
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.ui-invalid {
+    background-color:red
+}
+

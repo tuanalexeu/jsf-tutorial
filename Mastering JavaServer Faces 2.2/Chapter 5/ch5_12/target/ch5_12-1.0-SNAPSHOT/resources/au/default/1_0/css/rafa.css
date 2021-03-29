@@ -1,0 +1,4 @@
+body {
+    background-image: url('#{resource["au/default:img/bk.png"]}');
+    background-repeat:repeat-y;
+}

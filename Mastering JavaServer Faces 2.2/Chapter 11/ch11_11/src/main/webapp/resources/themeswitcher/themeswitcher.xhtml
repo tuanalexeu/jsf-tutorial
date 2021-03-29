@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="book.beans.ThemeSwitcherComponent">   
+        <cc:attribute name="theme" default="" type="java.lang.String" required="true"/>
+        <cc:attribute name="rows" type="java.lang.Integer" required="false" default="1"/>
+        <cc:attribute name="columns" type="java.lang.Integer" required="false" default="2"/>
+        <cc:attribute name="ignore" type="java.lang.String" required="false" default=""/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>   
+        <h:outputStylesheet library="themeswitcher" name="css/iconselect.css"/>
+        <h:outputScript library="themeswitcher" name="js/iconselect/iconselect.js" target="head"/>
+        <h:outputScript library="themeswitcher" name="js/iscroll/iscroll.js" target="head"/>
+
+        <div id="#{cc.clientId}_themeswitcher">
+            <div id="#{cc.clientId}_themeswitcher_dropdown">            
+            </div>
+            <h:form id="themeswitcherForm">
+                <h:inputHidden id="selectedTheme" value="#{cc.attrs.theme}"/>
+            </h:form>
+        </div>
+        <script type="text/javascript">
+
+            var iconSelect;
+            var currentTheme = document.getElementById("#{cc.clientId}:themeswitcherForm:selectedTheme").value;
+
+            window.onload = function() {
+
+                iconSelect = new IconSelect("#{cc.clientId}_themeswitcher_dropdown",
+                        {'selectedIconWidth': 40,
+                            'selectedIconHeight': 40,
+                            'selectedBoxPadding': 30,
+                            'selectedBoxPaddingRight': 30,
+                            'iconsWidth': 48,
+                            'iconsHeight': 48,
+                            'boxIconSpace': 1,
+                            'vectoralIconNumber': #{cc.attrs.columns},
+                            'horizontalIconNumber': #{cc.attrs.rows},
+                            'componentIconFilePath': '#{resource["themeswitcher/images:arrow.png"]}'});
+
+                var icons = [];
+
+                var themes = '#{cc.contracts}';
+                themes = themes.substring(1, themes.length - 1); //eliminate '[' and ']'                
+                var arrayThemes = themes.split(",");
+                //<![CDATA[
+                icons.push({'iconFilePath': '#{resource["themeswitcher/images:arrow_right.png"]}', 'iconValue': -1, 'iconText': 'Select a theme'});
+                for (var theme = 0; theme < arrayThemes.length; theme++) {
+                    arrayThemes[theme] = arrayThemes[theme].replace(/\s/g, "") //eliminate spaces
+                    //check to see if this theme should be ignored
+                    if ('#{cc.attrs.ignore}'.indexOf(arrayThemes[theme]) === -1) {
+                        icons.push({'iconFilePath': '#{request.contextPath}#{request.servletPath}/javax.faces.resource/' + arrayThemes[theme] + '.png?con=' + arrayThemes[theme], 'iconValue': theme, 'iconText': arrayThemes[theme]});
+                    }
+                }
+                //]]>
+
+                iconSelect.refresh(icons);
+            };
+
+            function setTheme(selectedTheme) {
+                document.getElementById("#{cc.clientId}:themeswitcherForm:selectedTheme").value = selectedTheme;
+                document.forms["#{cc.clientId}:themeswitcherForm"].submit();
+            }
+
+        </script>
+
+    </cc:implementation>
+</html>

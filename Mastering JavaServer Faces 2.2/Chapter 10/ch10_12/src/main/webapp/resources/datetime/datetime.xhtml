@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="datetime">
+        <cc:attribute name="min" type="java.util.Date" />
+        <cc:attribute name="max" type="java.util.Date" />
+        <cc:attribute name="value" type="java.util.Date" required="true" />
+        <cc:attribute name="list" type="java.lang.String" default="" />
+        <cc:attribute name="step" type="java.lang.String" default="1" />                        
+        <cc:attribute name="required" type="java.lang.String" default="false" />
+        <cc:attribute name="readonly" type="java.lang.String" default="false" />
+        <cc:clientBehavior name="change" targets="#{cc.id}" event="change" />   
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div id="#{cc.clientId}:dt">
+            <input jsf:id="#{cc.id}" type="date" jsf:value="#{cc.attrs.value}" jsf:readonly="#{cc.attrs.readonly != 'false' ? 'true' : 'false'}"
+                   min="#{cc.minHTML5Date}" max="#{cc.maxHTML5Date}" jsf:required="#{cc.attrs.required != 'false' ? 'true' : 'false'}" step="#{cc.attrs.step}" list="#{cc.attrs.list}">
+                <f:convertDateTime pattern="yyyy-MM-dd" />
+            </input>
+        </div>
+    </cc:implementation>
+</html>
+
+

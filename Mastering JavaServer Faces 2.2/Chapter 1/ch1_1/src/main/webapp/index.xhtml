@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title></title>
+        <style media="screen" type="text/css">
+            .red {
+                color:#cc0000;
+            }
+            .blue {
+                color: #0000cc;
+            }
+        </style>
+        <script type="text/javascript">
+            function infoJS(name, surname) {
+                alert("Name: " + name + " Surname: " + surname);
+            }
+        </script>  
+    </h:head>
+    <h:body>
+        <b>Referencing Bean:</b><br/>
+        #{playersBean}<br/>
+        <br/><b>Simple Bean Properties Output:</b><br/>        
+        <i>#{playersBean.honorific} #{playersBean.playerName} #{playersBean.playerSurname}</i><br/>
+        <br/><b>Nested Bean Properties Output:</b><br/>
+        Age: <i>#{playersBean.playerDetails.age}</i><br/>        
+        Birthday: <i>#{playersBean.playerDetails.birthday}</i><br/>
+        Birthplace: <i>#{playersBean.playerDetails.birthplace}</i><br/>
+        Residence: <i>#{playersBean.playerDetails.residence}</i><br/>
+        Height: <i>#{playersBean.playerDetails.height}</i><br/>
+        Weight: <i>#{playersBean.playerDetails.weight}</i><br/>
+        <br/><b>More Nested Bean Properties Output:</b><br/>
+        Turned Pro: <i>#{playersBean.playerDetails.playerMoreDetails.turnedpro}</i><br/>
+        Coach: <i>#{playersBean.playerDetails.playerMoreDetails.coach}</i><br/>
+        Website: <i>#{playersBean.playerDetails.playerMoreDetails.website}</i><br/>
+        <br/><b>Nested Bean Properties Output []:</b><br/>
+        Age: <i>#{playersBean.playerDetails['age']}</i><br/>         
+        Birthday: <i>#{playersBean.playerDetails['birthday']}</i><br/>
+        Birthplace: <i>#{playersBean.playerDetails['birthplace']}</i><br/>
+        Residence: <i>#{playersBean.playerDetails['residence']}</i><br/>
+        Height: <i>#{playersBean.playerDetails['height']}</i><br/>
+        Weight: <i>#{playersBean.playerDetails['weight']}</i><br/>
+        <br/><b>More Nested Bean Properties Output []:</b><br/>
+        Turned Pro: <i>#{playersBean.playerDetails['playerMoreDetails']['turnedpro']}</i><br/>
+        Coach: <i>#{playersBean.playerDetails['playerMoreDetails']['coach']}</i><br/>
+        Website: <i>#{playersBean.playerDetails['playerMoreDetails']['website']}</i><br/>
+        <br/><b>Java SE enumerated types output:</b><br/>
+        Plays: <i>#{playersBean.play} #{playersBean.play == 'Left'} #{playersBean.play == 'Right'}</i><br/>
+        <br/><b>Collections Bean Output:</b><br/>
+        Second title: <i>#{playersBean.titles_2013[1]}</i><br/>
+        All titles (method 1): 
+        <c:forEach begin="0" end="${fn:length(playersBean.titles_2013)-1}" var="i">
+            <i>#{playersBean.titles_2013[i]}</i>,            
+        </c:forEach>
+        <br/>
+        All titles (method 2): 
+        <c:forEach var="title" items="#{playersBean.titles_2013}">
+            <i>#{title}</i>,
+        </c:forEach>
+        <br/>
+        All titles (method 3): 
+        <ui:repeat var="title" value="#{playersBean.titles_2013}">
+            <i>#{title}</i>,
+        </ui:repeat>
+        <br/>
+        Third final: <i>#{playersBean.finals_2013[2]}</i><br/>       
+        Double Faults: <i>#{playersBean.matchfacts["Double Faults"]}</i><br/>
+        Aces: <i>#{playersBean.matchfacts.Aces}</i><br/>    
+        <br/><b>Calling Bean Methods:</b><br/>
+        Calling 'vamosRafa_1', no arguments, no return result: <i>#{playersBean.vamosRafa_1()}</i><br/>
+        Calling 'vamosRafa_2', no arguments method, return result: <i>#{playersBean.vamosRafa_2()}</i><br/>
+        Calling 'vamosRafa_3' with one argument, return void: <i>#{playersBean.vamosRafa_3('Vamos Rafa!')}</i><br/>
+        Calling 'vamosRafa_4' with two arguments, return result: <i>#{playersBean.vamosRafa_4(playersBean.playerName, playersBean.playerSurname)}</i><br/>
+        Calling 'vamosRafa_5' for auto navigation:
+        <h:form>   
+            <h:commandButton action="#{playersBean.vamosRafa_5()}" value="Vamos ..." />
+        </h:form>
+        Calling a method that contain an ActionEvent argument:<br/>
+        <h:form>
+            <h:commandButton value="Player Listener 1" actionListener="#{playersBean.playerListener}" action="#{playersBean.playerDone()}"/>
+        </h:form>
+        <br/>
+        Calling JavaScript function with bean properties:        
+        <h:form>
+            <h:commandButton type="button" value="Click Me!" onclick="infoJS('#{playersBean.playerName}', '#{playersBean.playerSurname}')"/>
+        </h:form>
+        <br/><br/><b>Conditional text JSF:</b><br/>
+        <i><h:outputText styleClass="#{playersBean.play == 'Left' ? 'red': 'blue'}" value="#{playersBean.play}"/></i><br/>   
+        <c:forEach var="title" items="#{playersBean.titles_2013}" varStatus="v">
+            <i>#{title}</i>
+            #{v.last ? '':','}
+        </c:forEach>
+        <br/>
+        <i><h:outputText value="#{playersBean.playerDetails.playerMoreDetails.turnedpro lt 2000 ? 'Turned pro before 2000':'Turned pro after 2000'}"/></i><br/>
+        <i><h:outputText value="Facebook address: #{playersBean.facebook}" rendered="#{!empty playersBean.facebook}" /></i>
+        <h:form id="prizeFormId">              
+            <h:commandButton value="Show Career Prize Money">
+                <f:ajax render="rnprizeid" listener="#{playersBean.showPrizeMoney()}"/>
+            </h:commandButton>
+            <h:panelGrid id="rnprizeid">
+                <h:outputText value="#{playersBean.prize}" rendered="#{playersBean.show_prize}">               
+                    <f:convertNumber type="currency" currencySymbol="$" />
+                </h:outputText>            
+            </h:panelGrid>
+            <h:commandButton value="Hide Career Prize Money">
+                <f:ajax render="rnprizeid" listener="#{playersBean.hidePrizeMoney()}"/>
+            </h:commandButton>
+        </h:form>
+        <br/>
+        Official Rafael Nadal racquet: Babolat Aero Pro Drive GT 2013<br/>
+        <h:form>
+            <h:selectBooleanCheckbox label="Show Image" valueChangeListener="#{playersBean.showHideRacquetPicture}">
+                <f:ajax render="racquetId"/>
+            </h:selectBooleanCheckbox>        
+            <h:panelGroup id="racquetId">
+                <ui:fragment rendered="#{playersBean.show_racquet}">
+                    <img src="#{resource['images:babolat.jpg']}" width="290" height="174"/>
+                </ui:fragment>    
+            </h:panelGroup >
+        </h:form>
+    </h:body>
+</html>
+

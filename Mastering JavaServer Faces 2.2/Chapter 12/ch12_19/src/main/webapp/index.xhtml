@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f5="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title></title>         
+    </h:head>
+    <h:body>
+        <ui:composition template="template/layout.xhtml">     
+          
+            <ui:param name="wrapperWidth" value="1055px"/>
+            
+            <ui:define name="title">
+                Rafael Nadal Website Tribute
+            </ui:define>
+
+            <ui:define name="login">
+                <h:form id="loginFormId">
+                    <h:inputText styleClass="inputs" value="" f5:type="email" f5:placeholder="E-mail"/>            
+                    <h:inputSecret  styleClass="inputs" value="" f5:placeholder="Password"/>            
+                    <h:commandButton styleClass="lbutton" value="Vamos!"/>
+                </h:form>
+            </ui:define>
+            
+            <ui:param name="search" value="false"/>
+            
+            <ui:define name="logo"/>
+
+            <ui:define name="top">     
+                .:KING OF CLAY ... KING OF ATP:.
+            </ui:define>
+
+            <ui:define name="menu">
+                <ui:include src="rafaMenu.xhtml" />
+            </ui:define>
+           
+            <ui:param name="leftWidth" value="200px"/>
+            <ui:define name="left">
+                <h:outputText value="EVENTS" style="color:#cccc00;font-size: 18px;"/><br/>
+                <br/>
+                <h:panelGroup>
+                    <h:outputText value="MC: The draw" style="color:#cccc00;"/><br/>
+                    <h:outputText value="12 Apr, 2014" style="color:#ffffff;"/>
+                    <hr/>
+                    <h:outputText value="RafaLint: April 8th" style="color:#cccc00;"/><br/>
+                    <h:outputText value="8 Apr, 2014" style="color:#ffffff;"/>
+                    <hr/>
+                    <h:outputText value="RafaLint: April 4th" style="color:#cccc00;"/><br/>
+                    <h:outputText value="4 Apr, 2014" style="color:#ffffff;"/>
+                    <hr/>
+                    <h:outputText value="RafaLint: April 2nd" style="color:#cccc00;"/><br/>
+                    <h:outputText value="2 Apr, 2014" style="color:#ffffff;"/>
+                    <hr/>
+                </h:panelGroup>
+            </ui:define>
+
+            <ui:param name="right" value="false"/>
+
+            <ui:define name="content">               
+                <hr/>
+                <h:panelGrid columns="2" style="margin-left:auto;margin-right:auto;width:10%;">
+                    <h:graphicImage value="#{resource['images/rafa/1.png']}"/>
+                    <h:graphicImage value="#{resource['images/rafa/2.png']}"/>
+                    <h:outputText value="POKER FACE" style="color:#cc0000; font-weight: bold;"/>
+                    <h:outputText value="RAFALINT: APRIL 8TH" style="color:#cc0000; font-weight: bold;"/>
+                    <h:outputText value="Rafa vs. Vanessa Selbst – winner, Vanessa." style="color:#000000; font-weight: bold;"/>
+                    <h:outputText value="Lots of random lint – presser, practice and ..." style="color:#000000; font-weight: bold;"/>
+                    <h:graphicImage value="#{resource['images/rafa/3.png']}"/>
+                    <h:graphicImage value="#{resource['images/rafa/4.png']}"/>
+                    <h:outputText value="RAFALINT: APRIL 4TH" style="color:#cc0000; font-weight: bold;"/>
+                    <h:outputText value="RAFALINT: APRIL 2ND" style="color:#cc0000; font-weight: bold;"/>
+                    <h:outputText value="Rafa’s been in an airport recently…" style="color:#000000; font-weight: bold;"/>
+                    <h:outputText value="From signing with Banco Sabadell to watching footie ..." style="color:#000000; font-weight: bold;"/>
+                </h:panelGrid>   
+                <hr/>
+            </ui:define>
+
+            <ui:define name="bottom">
+                Nadal News © 2014. All Rights Reserved.
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

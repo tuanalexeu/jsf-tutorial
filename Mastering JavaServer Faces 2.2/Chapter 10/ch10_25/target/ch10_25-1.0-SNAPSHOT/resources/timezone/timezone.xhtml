@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="book.beans.TimeZoneComponent">        
+        <cc:attribute name="value" type="java.util.TimeZone"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <script type='text/javascript'>
+            function progressIndicator(data) {
+                if (data.status === "begin") {
+                    document.getElementById("#{cc.clientId}:ajax_loaderId").style.display = "inline";
+                }
+                if (data.status === "complete") {
+                    document.getElementById("#{cc.clientId}:ajax_loaderId").style.display = "none";
+                }
+            }
+        </script>                
+        <h:outputStylesheet library="timezone" name="styles.css"/>        
+        <div id="#{cc.clientId}_maintimezoneId">             
+            <h:outputText value="Current timezone: #{timeZoneBean.timezone.displayName} (#{timeZoneBean.timezone.ID})"/>                        
+            <h:graphicImage id="ajax_loaderId" value="#{resource['timezone:ajax-loader.gif']}"/>                                              
+            <div id="#{cc.clientId}_timezoneId">                             
+                <h:outputLabel id="label_mainzoneId" value="Main Zone Part:" for="mainzoneId"/>
+                <h:selectOneMenu id="mainzoneId" binding="#{cc.mainzone}">
+                    <f:selectItems value="#{cc.mainzones}" /> 
+                    <f:ajax execute="mainzoneId" onevent="progressIndicator" listener="#{cc.updateAllSecondaryZones}" />
+                </h:selectOneMenu>
+                <h:outputLabel id="label_secondaryzoneId" value="Secondary Zone Part:" for="secondaryzoneId"/>
+                <h:selectOneMenu id="secondaryzoneId" binding="#{cc.secondaryzone}">
+                    <f:selectItems value="#{cc.secondaryzones}" />
+                    <f:ajax execute="mainzoneId secondaryzoneId" onevent="progressIndicator" listener="#{cc.updateAllInZones}" />
+                </h:selectOneMenu>
+                <h:outputLabel id="label_inzoneId" value="Third Zone Part:" for="inzoneId"/>
+                <h:selectOneMenu id="inzoneId" binding="#{cc.inzone}">
+                    <f:selectItems value="#{cc.inzones}" />                
+                </h:selectOneMenu>                                          
+            </div>    
+        </div>        
+    </cc:implementation>
+</html>

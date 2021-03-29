@@ -1,0 +1,5 @@
+book\beans\TempConvertComponent.class
+book\beans\TempBean.class
+.netbeans_automatic_build
+book\beans\TempConvertClient.class
+book\beans\TempConvertRenderer.class

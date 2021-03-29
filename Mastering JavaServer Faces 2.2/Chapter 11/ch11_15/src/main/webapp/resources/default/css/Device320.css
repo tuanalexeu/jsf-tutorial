@@ -1,0 +1,37 @@
+.divs
+{
+    text-align: center;
+    padding: 1px;
+    margin: 0px auto;
+    color: black;
+    background-color:lightgrey;
+    width:140px;
+    padding:10px;
+}
+.maindiv
+{
+    padding: 1px;
+    margin: 0px auto;
+    color: black;
+    background-color:darkgrey;
+    width:170px;
+    padding:10px;
+} 
+.fontbsase {
+    color: #333333;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+.fonttemp {
+    color: #333333;
+    font-family: 'Arial Black', Gadget, sans-serif;
+    font-size: 15px;
+}
+
+.component{
+    width:160px;
+}
+
+.componenti{
+    width:155px;
+}

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://xmlns.jcp.org/jsf/composite/piano"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="8" cellspacing="0" cellpadding="0">
+            <t:piano note="DO1_NOTE" src="#{resource['default/images:do1.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>    
+            <t:piano note="RE_NOTE" src="#{resource['default/images:re.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="MI_NOTE" src="#{resource['default/images:mi.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="FA_NOTE" src="#{resource['default/images:fa.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="SOL_NOTE" src="#{resource['default/images:sol.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="LA_NOTE" src="#{resource['default/images:la.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="SI_NOTE" src="#{resource['default/images:si.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+            <t:piano note="DO2_NOTE" src="#{resource['default/images:do2.png']}" action="#{pianoBean.notesToMusic()}">                    
+                <f:actionListener for="pianoActionListener" type="book.beans.PianoListener"/>      
+                <f:ajax event="action" execute="@this" render=":linesId"/>
+            </t:piano>
+        </h:panelGrid>
+        <t:musicallines id="linesId" lines="#{pianoBean.mlines}"/>
+    </h:body>
+</html>
+

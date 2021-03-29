@@ -1,0 +1,3 @@
+book\beans\ConfirmDeleteBehavior.class
+book\ejbs\ConfirmEJBBean.class
+book\beans\ConfirmBean.class

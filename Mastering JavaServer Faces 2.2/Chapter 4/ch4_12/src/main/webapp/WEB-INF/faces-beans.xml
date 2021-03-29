@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <managed-bean>
+        <managed-bean-name>playersBean</managed-bean-name>
+        <managed-bean-class>book.beans.PlayersBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>name</property-name>
+            <value>Nadal</value>
+        </managed-property>
+        <managed-property>
+            <property-name>surname</property-name>
+            <value>Rafael</value>
+        </managed-property>
+        <managed-property>
+            <property-name>age</property-name>
+            <value>27</value>
+        </managed-property>
+        <managed-property>
+            <property-name>play</property-name>
+            <value>Left</value>
+        </managed-property>
+        <managed-property>
+            <property-name>rafakey</property-name>
+            <value>#{initParam.rafakey}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>matchfacts</property-name>
+            <map-entries>
+                <map-entry>
+                    <key>Aces</key>
+                    <value>12</value>
+                </map-entry>
+                <map-entry>
+                    <key>Double Faults</key>
+                    <value>2</value>
+                </map-entry>
+                <map-entry>
+                    <key>1st Serve</key>
+                    <value>70%</value>
+                </map-entry>
+            </map-entries>
+        </managed-property>
+        <managed-property>
+            <property-name>titles_2013</property-name>
+            <list-entries>
+                <value-class>java.lang.String</value-class>
+                <value>Sao Paulo</value>
+                <value>Acapulco</value>
+                <value>Barcelona</value>
+                <value>...</value>
+                <null-value/>
+            </list-entries>
+        </managed-property>
+    </managed-bean>      
+</faces-config>

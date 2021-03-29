@@ -1,0 +1,16 @@
+/* 
+    Document   : player
+    Created on : Dec 11, 2013, 2:33:39 AM
+    Author     : Leonard
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.roger-style {     
+     border : 1px solid  #DDFF11;
+     font-family : verdana;
+     font-size : 14px;
+     font-weight:normal;
+     color: #00CC00;
+     background-color:#AD0000;     
+}

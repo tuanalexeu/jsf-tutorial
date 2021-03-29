@@ -1,0 +1,4 @@
+book\beans\WelcomeTagHandlerDelegate.class
+book\beans\WelcomeComponent.class
+book\beans\WelcomeTagHandlerDelegateFactory.class
+book\beans\WelcomeComponentHandler.class

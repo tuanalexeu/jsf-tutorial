@@ -1,0 +1,4 @@
+book\beans\CustomClientWindow.class
+book\beans\PullWindowIdBean.class
+book\beans\CustomLifecycle.class
+book\beans\CustomLifecycleFactory.class

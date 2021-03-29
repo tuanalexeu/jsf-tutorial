@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f5="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>       
+        <hr/>       
+        <h:form>                      
+            <h:message id="msgId" showDetail="true" showSummary="true" for="nameId" style="color: red;"/>
+            <hr/>
+            <h:inputText id="nameId" value="#{ajaxBean.name}" validator="nameValidator" f5:placeholder="Enter your name ..."/>
+            <h:commandButton value="Submit">
+                <f:ajax execute="@form" resetValues="true" listener="#{ajaxBean.upperCaseName()}" render="nameId msgId"/>
+            </h:commandButton>
+            <h:commandButton value="Cancel">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>  
+            <h:commandButton value="Clear">
+                <f:ajax execute="@this" render="@form" listener="#{ajaxBean.cancelName()}"/>
+            </h:commandButton>
+        </h:form>  
+        <hr/>
+    </h:body>
+</html>
+

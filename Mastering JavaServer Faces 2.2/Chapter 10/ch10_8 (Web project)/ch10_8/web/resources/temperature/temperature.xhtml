@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="book.beans.TempConvertComponent">
+        <cc:attribute name="value" type="java.lang.String" default="celsius/0"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:outputStylesheet name="temperature/temp.css" />            
+        <div id="#{cc.clientId}">
+            <h:outputLabel for="selectonemenu" value="Convert to:"/>
+            <h:selectOneMenu id="selectonemenu" binding="#{cc.unittoI}">
+                <f:selectItem itemValue="fahrenheit" itemLabel="fahrenheit" />
+                <f:selectItem itemValue="celsius" itemLabel="celsius" />
+            </h:selectOneMenu>
+            <h:outputLabel for="inputfield" value="Insert value:"/>
+            <h:inputText id="inputfield" binding="#{cc.temptI}"/>          
+            <h:commandButton id="button" value="Convert">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            <h:panelGroup id="div" layout="block" class="tempClass">
+                <h:outputText value="&deg; #{cc.unittoI.value eq 'fahrenheit' ? 'F ': 'C ' } #{cc.getTempConvert()}"/>
+            </h:panelGroup>   
+        </div>
+    </cc:implementation>
+</html>

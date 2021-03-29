@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>        
+        <span jsfc="h:panelGroup">Insert your name:</span>
+        <form jsfc="h:form">
+            <input type="text" jsfc="h:inputText" value="#{nameBean.name}" />
+            <input type="submit" jsfc="h:commandButton" value="Send"/>
+        </form>
+        <span jsfc="h:panelGroup">Inserted name:#{nameBean.name}</span><br/>
+        <span jsfc="ui:remove">
+            Inserted name:<h:outputText value="#{nameBean.name}"/>
+        </span>
+    </h:body>
+</html>
+

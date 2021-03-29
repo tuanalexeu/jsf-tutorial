@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h:form>          
+            <b>HASH SET:</b>
+            <h:dataTable value="#{playersBean.dataHashSet}" binding="#{table}" var="t" border="1">
+                <h:column>
+                    <f:facet name="header">No</f:facet>
+                    #{table.rowIndex+1}.
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ranking</f:facet>
+                    <h:inputText value="#{t.ranking}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.ranking}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:inputText value="#{t.player}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.player}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Age</f:facet>                    
+                    <h:inputText value="#{t.age}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.age}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Birthplace</f:facet>                    
+                    <h:inputText value="#{t.birthplace}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.birthplace}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Residence</f:facet> 
+                    <h:inputText value="#{t.residence}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.residence}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Height (cm)</f:facet>     
+                    <h:inputText value="#{t.height}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.height}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Weight (kg)</f:facet>            
+                    <h:inputText value="#{t.weight}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.weight}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Coach</f:facet>      
+                    <h:inputText value="#{t.coach}" size="10" rendered="#{t.edited}" />
+                    <h:outputText value="#{t.coach}" rendered="#{not t.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Born</f:facet>
+                    <h:outputText value="#{t.born}" rendered="#{not t.edited}">                
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                    <h:inputText value="#{t.born}" size="10" rendered="#{t.edited}">                    
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandLink value="Delete" action="#{playersBean.deleteRowHashSet(t)}" /> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Edit</f:facet>
+                    <h:commandLink value="Edit" action="#{playersBean.editRowHashSet(t)}" rendered="#{not t.edited}" /> 
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Save Hash Set Changes" action="#{playersBean.saveHashSet()}" />
+
+            <br/>
+            <b>HASH MAP:</b>
+            <h:dataTable value="#{playersBean.dataHashMap.entrySet()}" binding="#{tablem}" var="t" border="1">
+                <h:column>
+                    <f:facet name="header">No</f:facet>
+                    #{tablem.rowIndex+1}.
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ranking</f:facet>
+                        #{t.key}                       
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Name</f:facet>                    
+                    <h:inputText value="#{t.value.player}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.player}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Age</f:facet>                    
+                    <h:inputText value="#{t.value.age}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.age}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Birthplace</f:facet>                    
+                    <h:inputText value="#{t.value.birthplace}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.birthplace}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Residence</f:facet>                    
+                    <h:inputText value="#{t.value.residence}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.residence}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Height (cm)</f:facet>                   
+                    <h:inputText value="#{t.value.height}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.height}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Weight (kg)</f:facet>                    
+                    <h:inputText value="#{t.value.weight}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.weight}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Coach</f:facet>                   
+                    <h:inputText value="#{t.value.coach}" size="10" rendered="#{t.value.edited}" />
+                    <h:outputText value="#{t.value.coach}" rendered="#{not t.value.edited}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Born</f:facet>
+                    <h:outputText value="#{t.value.born}" rendered="#{not t.value.edited}">                
+                        <f:convertDateTime pattern="dd.MM.yyyy" />
+                    </h:outputText>
+                    <h:inputText value="#{t.value.born}" size="10" rendered="#{t.value.edited}">
+                        <f:convertDateTime pattern="dd.MM.yyyy" />                        
+                    </h:inputText>                  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Delete</f:facet>
+                    <h:commandLink value="Delete" action="#{playersBean.deleteRowHashMap(t.key)}" /> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Edit</f:facet>
+                    <h:commandLink value="Edit" action="#{playersBean.editRowHashMap(t.value)}" rendered="#{not t.value.edited}"/> 
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Save Hash Map Changes" action="#{playersBean.saveHashMap()}" />
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+    <!--Scripts-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+</head>
+<body>
+    <select id="demo-htmlselect">
+        <option value="0" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/facebook-icon-32.png"
+                data-description="Description with Facebook">Facebook</option>
+        <option value="1" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/twitter-icon-32.png"
+                data-description="Description with Twitter">Twitter</option>
+        <option value="2" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/linkedin-icon-32.png"
+                data-description="Description with LinkedIn">LinkedIn</option>
+        <option value="3" data-imagesrc="http://dl.dropbox.com/u/40036711/Images/foursquare-icon-32.png"
+                data-description="Description with Foursquare">Foursquare</option>
+    </select>
+    <div class="spacer">
+    </div>
+    <button id="make-it-slick">
+        Make it slick!</button>
+    <button id="restore">
+        Restore to Original</button>
+
+    <script type="text/javascript">
+
+        //Make it slick!
+        $('#make-it-slick').on('click', function() {
+            $('#demo-htmlselect').ddslick();
+        });
+
+        //Restore Original
+        $('#restore').on('click', function() {
+            $('#demo-htmlselect').ddslick('destroy');
+        });
+    </script>    
+    <script type="text/javascript" src="http://dl.dropbox.com/u/40036711/Scripts/jquery.ddslick.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface componentType="book.beans.ThemeSwitcherComponent">   
+        <cc:attribute name="theme" default="" type="java.lang.String" required="true"/>                
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation> 
+        <h:outputStylesheet library="themeswitcher" name="css/styles.css"/>
+        <div id="#{cc.clientId}_themeswitcher">   
+            <div id="#{cc.clientId}_inner_themeswitcher">
+                <h:outputText id="selectedTheme" value="Selected: #{cc.attrs.theme}"/>
+                <h:form id="themeswitcherForm">                    
+                    <h:dataTable id="themeswitcherTable" border="1" value="#{cc.contracts}" var="t">                              
+                        <h:column>  
+                            <h:commandLink action="#{themeSwitcherBean.themeAction(t)}">
+                                <h:graphicImage value="#{request.contextPath}#{request.servletPath}/javax.faces.resource/#{t}.png?con=#{t}" style="width:30px;height:30px;"/>
+                            </h:commandLink>
+                        </h:column>
+                        <h:column>                           
+                            <h:outputText value="#{t}"/>
+                        </h:column>                                           
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>        
+    </cc:implementation>
+</html>

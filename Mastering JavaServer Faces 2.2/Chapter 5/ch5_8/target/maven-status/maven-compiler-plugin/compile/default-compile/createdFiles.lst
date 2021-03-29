@@ -1,0 +1,4 @@
+book\beans\CustomExternalContextFactory.class
+book\beans\CustomExternalContext.class
+book\beans\CustomResponseStream.class
+book\beans\PlayersBean.class

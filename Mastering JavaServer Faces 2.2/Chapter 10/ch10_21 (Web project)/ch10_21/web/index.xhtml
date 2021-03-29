@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://jsf/cc/packt/taglib"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <hr/>
+        Specified unit and temperature from bean:
+        <h:form id="tempForm1">              
+            <t:temperature id="temp1" value="#{tempBean.value}" /> 
+            <h:message for="temp1"/>
+        </h:form>   
+        <hr/>
+        Specified unit and temperature as constants:
+        <h:form id="tempForm2">           
+            <t:temperature id="temp2" value="celsius/1" /> 
+            <h:message for="temp2"/>
+        </h:form> 
+        <h:form id="sliderFormId">
+            <h:panelGrid columns="1">                
+                <t:range-slider id="sliderId" min="#{sliderBean.min}" max="#{sliderBean.max}" leftside="#{sliderBean.leftside}" rightside="#{sliderBean.rightside}"/>                                        
+                <h:commandButton value="Send" action="#{sliderBean.sliderListener()}">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+            </h:panelGrid>
+        </h:form> 
+    </h:body>
+</html>
+

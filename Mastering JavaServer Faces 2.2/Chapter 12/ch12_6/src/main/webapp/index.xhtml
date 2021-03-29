@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>    
+        <h2>.: ITERATING COLLECTIONS :.</h2><br/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with ArrayList (t.ranking)"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t">
+            <h:outputText value="#{t.ranking}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with LinkedList (t.player)"/><br/>
+        <ui:repeat value="#{playersBean.dataLinkedList}" var="t">
+            <h:outputText value="#{t.player}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashSet (t.age)"/><br/>
+        <ui:repeat value="#{playersBean.dataHashSet.toArray()}" var="t">
+            <h:outputText value="#{t.age}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with TreeSet (t.birthplace)"/><br/>
+        <ui:repeat value="#{playersBean.dataTreeSet.toArray()}" var="t">
+            <h:outputText value="#{t.birthplace}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with LinkedHashSet (t.residence)"/><br/>
+        <ui:repeat value="#{playersBean.dataLinkedHashSet.toArray()}" var="t">
+            <h:outputText value="#{t.residence}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashMap (t.height) - approach 1"/><br/>
+        <ui:repeat value="#{playersBean.dataHashMap.entrySet().toArray()}" var="t">
+            <h:outputText value="key:#{t.key} value of height:#{t.value.height}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashMap (t.height) - approach 2"/><br/>
+        <ui:repeat value="#{playersBean.dataHashMap.keySet().toArray()}" var="t">
+            <h:outputText value="key:#{t} value of height:#{playersBean.dataHashMap.get(t).height}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashMap (t.height) - approach 3"/><br/>
+        <ui:repeat value="#{playersBean.dataHashMap.values().toArray()}" var="t">
+            <h:outputText value="#{t.height}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashMap (t.height) - approach 4"/><br/>
+        <ui:repeat value="#{playersBean.dataHashMap.entrySet()}" var="t">
+            <ui:repeat value="#{t.toArray()}" var="q">
+                <h:outputText value="key:#{q.key} value of height:#{q.value.height}" /><br/>
+            </ui:repeat>
+        </ui:repeat>        
+        <hr/>        
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with HashMap as Collection (t.weight)"/><br/>
+        <ui:repeat value="#{playersBean.dataCollectionMap.toArray()}" var="t">
+            <h:outputText value="#{t.weight}" /><br/>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with TreeMap (t.coach)"/><br/>
+        <ui:repeat value="#{playersBean.dataTreeMap.keySet().toArray()}" var="t">
+            <h:outputText value="key:#{t} value of coach:#{playersBean.dataTreeMap.get(t).coach}" /><br/>
+        </ui:repeat>       
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat with LinkedHashMap (t.born)"/><br/>
+        <ui:repeat value="#{playersBean.dataLinkedHashMap.keySet().toArray()}" var="t">
+            <h:outputText value="key:#{t} value of coach:#{playersBean.dataLinkedHashMap.get(t).born}" /><br/>
+        </ui:repeat>                
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat render with AJAX"/><br/>
+        <h:form>
+            <h:panelGroup id="playersId" layout="block">
+                <ui:repeat value="#{playersBean.dataArrayList}" var="t">
+                    <h:outputText value="#{t.player}" /><br/>
+                </ui:repeat>
+            </h:panelGroup>
+            <h:commandButton value="Remove Half" action="#{playersBean.removeHalf()}">               
+                <f:ajax execute="@form" render="playersId" />
+            </h:commandButton>
+        </h:form>
+        <h2>.: VARSTATUS - POJO PROPERTIES :.</h2><br/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat varStatus info"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t" varStatus="vs">
+            <hr/>
+            #{t.player}<br/>
+            #{vs}
+            <hr/>
+            Index: #{vs.index}<br/>
+            First: #{vs.first}<br/>
+            Last: #{vs.last}<br/>
+            Begin: #{vs.begin}<br/>
+            End: #{vs.end}<br/>
+            Step: #{vs.step}<br/>
+            Current: #{vs.current}<br/>
+            Even: #{vs.even}<br/>                
+            Odd: #{vs.odd}<br/>     
+        </ui:repeat>
+        <hr/>
+         <h2>.: ODD/EVEN ITEMS :.</h2><br/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat render only even rows using varStatus"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t" varStatus="vs">
+            <ui:fragment rendered="#{vs.even}">
+                <h:outputText value="#{vs.index}. #{t.player}"/><br/>
+            </ui:fragment>
+        </ui:repeat>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat render only odd rows using varStatus"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t" varStatus="vs">
+            <ui:fragment rendered="#{vs.odd}">
+                <h:outputText value="#{vs.index}. #{t.player}"/><br/>
+            </ui:fragment>
+        </ui:repeat>
+        <hr/>
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat render only even rows using step"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t" varStatus="vs" step="2">
+            <h:outputText value="#{vs.index}. #{t.player}"/><br/>        
+        </ui:repeat>
+        
+        <h:outputText style="color:#cc0000;font-weight: bold;" value="ui:repeat render only odd rows using step"/><br/>
+        <ui:repeat value="#{playersBean.dataArrayList}" var="t" varStatus="vs" step="2" offset="1">
+            <h:outputText value="#{vs.index}. #{t.player}"/><br/>        
+        </ui:repeat>
+    </h:body>
+</html>
+

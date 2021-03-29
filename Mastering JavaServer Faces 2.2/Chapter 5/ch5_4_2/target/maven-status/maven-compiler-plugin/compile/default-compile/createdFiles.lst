@@ -1,0 +1,3 @@
+book\beans\RafaLabelRenderer.class
+book\beans\LabelPictureBean.class
+book\ejbs\LabelPictureEJBBean.class

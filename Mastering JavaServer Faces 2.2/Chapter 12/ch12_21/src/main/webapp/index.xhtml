@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"                
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h2>TagHandlers vs Components</h2>
+        <hr/>
+        <h3>.:   C:FOREACH VS UI:REPEAT  :.</h3>
+        <hr/>
+        WRONG (using ui:repeat):
+        <ui:repeat value="#{filesBean.filesList}" var="t">
+            <ui:include src="#{t}"/>
+        </ui:repeat>
+        <hr/>
+        FIX (using ui:forEach):
+        <hr/>
+        <c:forEach items="#{filesBean.filesList}" var="t">
+            <ui:include src="#{t}"/>
+        </c:forEach>
+    </h:body>
+</html>
+

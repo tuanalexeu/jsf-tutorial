@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>   
+        <script type="text/javascript">
+            function validateFile() {   
+                // <![CDATA[
+                document.getElementById('formSaveId:uploadHiddenId').value = false;
+                document.getElementById('validationId').innerHTML = "";
+
+                var file = document.getElementById('formUploadId:fileToUpload').files[0];
+
+                document.getElementById('fileNameId').innerHTML = "<b>File Name:</b> " + file.name;
+
+                if (file.size > 1048576)
+                    fileSize = (Math.round(file.size * 100 / (1048576)) / 100).toString() + 'MB';
+                else
+                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+                document.getElementById('fileSizeId').innerHTML = "<b>File Size:</b> " + fileSize;
+                document.getElementById('fileContentTypeId').innerHTML = "<b>File Type:</b> " + file.type;
+
+                //VALIDATE FILE NAME LENGTH     
+                if (file.name.length === 0) {
+                    clearUploadField();
+                    document.getElementById('validationId').innerHTML = "<ul><li>Upload Error: Cannot determine the file name !</li></ul>";
+                    return false;
+                }
+
+                if (file.name.length > 25) {
+                    clearUploadField();
+                    document.getElementById('validationId').innerHTML = "<ul><li>Upload Error: The file name is to long !</li></ul>";
+                    return false;
+                }
+
+                //VALIDATE FILE CONTENT TYPE               
+                if (file.type !== "image/png" && file.type !== "image/jpeg") {
+                    clearUploadField();
+                    document.getElementById('validationId').innerHTML = "<ul><li>Upload Error: Only images can be uploaded (PNGs and JPGs) !</li></ul>";
+                    return false;
+                }
+
+                //VALIDATE FILE SIZE (not bigger than 1 MB)   
+                if (file.size > 1048576) {
+                    clearUploadField();
+                    document.getElementById('validationId').innerHTML = "<ul><li>Upload Error: Cannot upload files larger than 1 MB !</li></ul>";
+                    return false;
+                }
+
+                document.getElementById('formSaveId:uploadHiddenId').value = true;
+                return true;
+                //]]>
+            }
+
+            function clearUploadField()
+            {
+                document.getElementById('previewImgId').removeAttribute("src");
+                document.getElementById('imgNameId').innerHTML = "";
+                document.getElementById('uploadMessagesId').innerHTML = "";
+                var original = document.getElementById("formUploadId:fileToUpload");
+                var replacement = document.createElement("input");
+
+                replacement.type = "file";
+                replacement.id = original.id;
+                replacement.name = original.name;
+                replacement.className = original.className;
+                replacement.style.cssText = original.style.cssText;
+                replacement.onchange = original.onchange;         
+                // ... more attributes
+
+                original.parentNode.replaceChild(replacement, original);
+            }
+        </script>
+    </h:head>
+    <h:body>          
+        <h:panelGrid columns="1" style="border-style:solid;border-width:5px;">
+            <div id="validationId" style="color:red;"></div>
+            <h:messages id="uploadMessagesId" globalOnly="true" style="color: red;"/>
+            <div id="fileNameId"></div>
+            <div id="fileSizeId"></div>
+            <div id="fileContentTypeId"></div>
+            <h:panelGrid columns="2">
+                <h:form id="formUploadId" enctype="multipart/form-data">                    
+                    <h:inputFile id="fileToUpload" onchange="return validateFile();" value="#{uploadBean.file}" required="true" requiredMessage="No file selected ...">                                      
+                        <f:ajax render=":previewImgId :imgNameId :uploadMessagesId"/>                          
+                    </h:inputFile>                                       
+                </h:form>                            
+                <h:form id="formSaveId">
+                    <h:inputHidden id="uploadHiddenId" value="#{uploadBean.upload}"/>
+                    <h:commandButton id="uploadBtnId" value="Upload Image" action="#{uploadBean.saveFileToDisk()}"/>                                                                 
+                </h:form>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <h:graphicImage id="previewImgId" value="/PreviewServlet/#{header['Content-Length']}" width="#{uploadBean.file.size gt 0 ? 100 : 0}" height="#{uploadBean.file.size gt 0 ? 100 : 0}"/>
+                <h:outputText id="imgNameId" value="#{uploadBean.file.submittedFileName} #{empty uploadBean.file.submittedFileName ? '' : ','} #{uploadBean.file.size} #{uploadBean.file.size gt 0 ? 'bytes' : ''}"/>
+            </h:panelGrid>   
+        </h:panelGrid>
+    </h:body>
+</html>
+

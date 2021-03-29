@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:t="http://xmlns.jcp.org/jsf/composite/datetime"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>                       
+        Date-time without datalist:
+        <h:form>             
+            <t:datetime value="#{dateTimeBean.date}" min="#{dateTimeBean.min}" max="#{dateTimeBean.max}"> 
+                <f:ajax event="change" execute="@form" listener="#{dateTimeBean.selectedDate()}"/>                
+            </t:datetime>            
+        </h:form>
+        <hr/>
+        Date-time with datalist:
+        <h:form>             
+            <t:datetime list="listId" value="#{dateTimeBean.date}"> 
+                <f:ajax event="change" execute="@form" listener="#{dateTimeBean.selectedDate()}"/>                
+            </t:datetime>
+            <t:datalist id="listId">
+                <t:option label="Day 1" value="2015-01-01"/>
+                <t:option label="Day 2" value="2015-01-02"/>
+                <t:option label="Day 3" value="2015-01-03"/>
+            </t:datalist>           
+        </h:form>
+    </h:body>
+</html>
+

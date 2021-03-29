@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="item" targets="#{cc.clientId}:imgForm:imgAction" required="true"/>
+        <cc:attribute name="src" required="true"/>
+        <cc:attribute name="action" method-signature="void action()"/>
+        <cc:actionSource name="imgActionListener" targets="#{cc.clientId}:imgForm:imgAction"/>  
+        <cc:clientBehavior name="action" event="action" targets="#{cc.clientId}:imgForm:imgAction"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:outputStylesheet library="default" name="css/styles.css" />            
+        <ui:param name="range" value="#{cc.attrs.item}" /> <!-- or use c:set -->
+        <ui:fragment rendered="#{range == 'item_1' or range == 'item_2' or range == 'item_3'}">
+            <div id="#{cc.clientId}:img">                
+                <h:form id="imgForm">                 
+                    <h:commandLink id="imgAction" immediate="true" action="#{cc.attrs.action}" styleClass="linkopacity">
+                        <h:inputHidden id="itemId" value="#{cc.attrs.item}"/>                            
+                        <h:graphicImage value="#{cc.attrs.src}"/>                                              
+                    </h:commandLink>                
+                </h:form>
+            </div>
+        </ui:fragment>
+    </cc:implementation>
+</html>

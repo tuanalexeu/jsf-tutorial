@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <h5>Navigate page-to-page via h:outputLink - WON'T WORK!</h5>
+        <h:outputLink value="done.xhtml">Navigate to done.xhtml page</h:outputLink>
+        <h5>Navigate page-to-page via h:outputLink, but add context path for the application to a context-relative path  - WORKS!</h5>
+        <h:outputLink value="#{facesContext.externalContext.applicationContextPath}/faces/done.xhtml">Navigate to done.xhtml page</h:outputLink>
+        <h5>Navigate to a JSF view via a non-JSF request using our servlet - WORK!</h5>
+        <h:outputLink value="jsfServlet?page=done.xhtml">Navigate to done.xhtml page</h:outputLink>
+    </h:body>
+</html>
+

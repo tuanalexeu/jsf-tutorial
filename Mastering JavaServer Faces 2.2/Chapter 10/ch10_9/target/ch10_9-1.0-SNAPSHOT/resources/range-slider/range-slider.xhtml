@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="min" type="java.lang.Integer" default="0" required="true"/>
+        <cc:attribute name="max" type="java.lang.Integer" default="1000" required="true"/>
+        <cc:attribute name="leftside" type="java.lang.Integer" default="450" required="true"/>
+        <cc:attribute name="rightside" type="java.lang.Integer" default="550" required="true"/> 
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:outputStylesheet name="range-slider/css/styles.css"/>  
+        <h:outputStylesheet name="range-slider/css/jquery-ui.css"/>         
+        <h:outputScript target="head" name="range-slider/js/jquery.min.js"/>
+        <h:outputScript target="head" name="range-slider/js/jquery-ui.min.js"/>         
+        <div id="#{cc.clientId}:w" class="w">
+            <div id="#{cc.clientId}:content" class="content">                              
+                <div id="#{cc.clientId}:rangedval" class="rangedval">
+                    Range Value: <span id="#{cc.clientId}:rangeval">#{cc.attrs.leftside} - #{cc.attrs.rightside}</span>
+                </div>                     
+                <div id="#{cc.clientId}:slider">                                            
+                </div>                                                          
+            </div>
+            <h:inputHidden id="leftsideId" value="#{cc.attrs.leftside}"/>
+            <h:inputHidden id="rightsideId" value="#{cc.attrs.rightside}"/>
+        </div>   
+
+        <script> rangeslider.init('#{cc.clientId}', '#{cc.attrs.min}', '#{cc.attrs.max}', '#{cc.attrs.leftside}', '#{cc.attrs.rightside}');</script>
+    </cc:implementation>
+</html>
+
+

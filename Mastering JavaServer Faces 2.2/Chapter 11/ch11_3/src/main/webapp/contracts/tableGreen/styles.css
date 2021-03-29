@@ -1,0 +1,107 @@
+.content {
+    border: 1px #888888 outset;
+    background-color: #ffffff;
+    text-align:center;
+    height:100%;
+    width:100%;
+    font:normal 12px/150% Arial, Helvetica, sans-serif;
+    background:#fff;
+    overflow:hidden;
+    border:1px solid #36752D;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+
+.content table {
+    border-collapse:collapse;
+    text-align:left;
+    width:100%;
+}
+
+.content table td,.content table th {
+    padding:3px 10px;
+}
+
+.content table thead th {
+    background:0;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D',endColorstr='#275420');
+    background-color:#36752D;
+    color:#FFF;
+    font-size:15px;
+    font-weight:700;
+    border-left:1px solid #36752D;
+}
+
+.content table thead th:first-child {
+    border:none;
+}
+
+.content table tbody td {
+    color:#275420;
+    border-left:1px solid #C6FFC2;
+    font-size:12px;
+    font-weight:400;
+}
+
+.content table tbody .alt td {
+    background:#DFFFDE;
+    color:#275420;
+}
+
+.content table tbody td:first-child {
+    border-left:none;
+}
+
+.content table tbody tr:last-child td {
+    border-bottom:none;
+}
+
+.content table tfoot td div {
+    border-top:1px solid #36752D;
+    background:#DFFFDE;
+    padding:2px;
+}
+
+.content table tfoot td {
+    font-size:12px;
+    padding:0;
+}
+
+.content table tfoot td ul {
+    list-style:none;
+    text-align:right;
+    margin:0;
+    padding:0;
+}
+
+.content table tfoot li {
+    display:inline;
+}
+
+.content table tfoot li a {
+    text-decoration:none;
+    display:inline-block;
+    color:#FFF;
+    border:1px solid #36752D;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background:0;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D',endColorstr='#275420');
+    background-color:#36752D;
+    margin:1px;
+    padding:2px 8px;
+}
+
+.content table tfoot ul.active,.content table tfoot ul a:hover {
+    text-decoration:none;
+    color:#FFF;
+    background:none;
+    background-color:#00CC00;
+    border-color:#275420;
+}
+
+div.dhtmlx_window_active,div.dhx_modal_cover_dv {
+    position:fixed!important;
+}

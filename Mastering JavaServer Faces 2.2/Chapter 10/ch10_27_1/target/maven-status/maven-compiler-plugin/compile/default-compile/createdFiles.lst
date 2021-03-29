@@ -1,0 +1,5 @@
+book\beans\WelcomeBean.class
+book\beans\TempConvertComponent.class
+book\beans\TempBean.class
+book\beans\CompositeBean.class
+book\beans\TempConvertClient.class

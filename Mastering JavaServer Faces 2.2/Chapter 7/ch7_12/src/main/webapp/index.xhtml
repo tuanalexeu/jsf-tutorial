@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        AJAX/NON-AJAX: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}<br/>
+        FACES-REQUEST HEADER: #{facesContext.externalContext.requestHeaderMap['Faces-Request']}<br/>
+        X-REQUESTED-WITH HEADER: #{facesContext.externalContext.requestHeaderMap['X-Requested-With']}
+        <hr/>
+        AJAX REQUEST
+        <hr/>
+        <h:form>
+            <h:commandButton value="Click Me!" action="#{ajaxBean.requestTypeAction()}">
+                <f:ajax execute="@this" render="@all"/>
+            </h:commandButton>
+        </h:form> 
+        <hr/>
+        NON-AJAX REQUEST
+        <hr/>
+        <h:form>
+            <h:commandButton value="Click Me!"  action="#{ajaxBean.requestTypeAction()}"/>               
+        </h:form>
+    </h:body>
+</html>
+
